@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview of changes and updates</title>
+    <link rel="stylesheet" href="../css/descriptive-page.css">
+    <!-- Optional: Include MathJax for mathematical formulas if needed -->
+<!-- -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$']],
+                displayMath: [['$$','$$']],
+                processEscapes: true
+            }
+        });
+    </script>
+ <!-- -->
+</head>
+<body>
+    <!-- Hidden provenance data that will be used by the main page -->
+    <div id="provenance-data">
+        <p>This Changes and Updates page was last updated on ___TIMESTAMP___.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2 id="general">General</h2>
+            <p>
+                Information available from these web pages is based on the following two sources: (i) all information regarding SI prefixes, constants
+                and units is taken from the <a href="https://si-digital-framework.org/SI?lang=en" target="_blank">SI Reference Point</a> and its 
+                <a href="https://si-digital-framework.org/api-docs/swagger-ui/?urls.primaryName=SI%20REFERENCE%20POINT" target="_blank">API</a>,
+                and (ii) the UDUNITS2 package available from <a href="https://www.unidata.ucar.edu/software/udunits/" target="_blank">NSF Unidata</a>, 
+                specifically the five <a href="https://en.wikipedia.org/wiki/XML" target="_blank">XML</a> files that contain pre-2019 unit definitions.
+            </p>
+            <p>
+                In the files from the SI Reference Point, the following unit categories are identified and used in UDUSI:
+                <em>base units</em>, <em>special named units</em>, <em>non-SI units</em> accepted for use with SI units, and a “helper category” for the non-SI unit <code>gram</code>.
+                In addition, SI <em>constants</em> and SI <em>prefixes</em> are used. Similarly, UDUNITS2 identifies five categories:
+                <em>prefixes</em>, <em>base</em> units, <em>derived</em> units, <em>accepted</em> units, and <em>common</em> units
+                (as reflected in the names of the XML files).
+            </p>
+    </div>
+    <div class="content-section">
+        <h2 id="unit-categories-used-in-udusi">Unit categories used in UDUSI</h2>
+        <ul>
+            <li>
+                The seven <em><strong>SI constants</strong></em> are added as separate entities (“units”), where the descriptions are taken directly
+                from the SI. In practice this means that the two pre-existing UDUNITS2 units <strong><code>avogadro_constant</code></strong> and
+                <strong><code>e</code></strong> (elementary charge) are now directly based to their SI definitions.
+            </li>
+            <li>
+                The <em><strong>SI prefixes</strong></em> include the recent (2022) additions <strong><code>quetta</code></strong>,
+                <strong><code>ronna</code></strong>, <strong><code>quecto</code></strong>, <strong><code>ronto</code></strong>, thus spanning
+                the interval from $10^{-30}$ to $10^{30}$. Moreover, UDUSI enables the two variant spellings <strong><code>deca</code></strong>
+                and <strong><code>deka</code></strong> for $10^1$.
+            </li>
+            <li>
+                The seven <em><strong>SI Base Units</strong></em> are directly taken from the SI. In practice, there are no changes compared to
+                to UDUNITS2, except that the descriptive text is based on SI.
+            </li>
+            <li>
+                In addition to the seven SI base units, there are 22 SI derived units that are designated as <em><strong>SI Special Named Units</strong></em>,
+                including the two units <strong><code>radian</code></strong> and <strong><code>steradian</code></strong>. The radian and the
+                steradian are now expressed as  <strong><code>m/m</code></strong> and <strong><code>m²/m²</code></strong>, respectively, even though
+                UDUNITS2 has to define radian as "dimensionless" (unit <strong><code>1</code></strong>), and steradian as <strong><code>rad²</code></strong>. 
+                Because SI now includes them in this group, UDUSI also includes the mathematical constant π (pi) as a unit (constant) in this group 
+                for technical reasons.
+            </li>
+            <li>
+                Finally, SI currently acknowledges 14 <em><strong>non-SI Units</strong></em> <em>accepted for use with the SI units</em>.
+                This list has changed over time:
+            </li>
+            <ul>
+                <li>
+                    Several units that were included as “SI accepted units” by UDUNITS2 are not in the current SI list. In UDUSI they are therefore
+                    moved to the “common” category. One notable example of this is the unit <em>knot</em> (nautical_mile/hour) which is no longer
+                    accepted for use with the SI.
+                </li>
+                <li>
+                    SI now includes the two logarithmic units <strong><code>bel</code></strong> and <strong><code>neper</code></strong> in this category.
+                    They are included in the UDUSI XML files as dimensionless units. <i>The UDUNITS2 support for manipulating these units
+                        is limited and not well tested.</i>
+                </li>
+                <li>
+                    In the UDUSI web presentation, the non-SI unit gram is included in this category for consistency, though SI treats it separately; 
+                    it is assigned its own XML file in UDUSI.
+                </li>
+            </ul>
+        <li>
+            Remaining units are outside SI and are listed under the UDUNITS2 <em><strong>Common Units</strong></em> category. This large category of
+            approximately 220 units includes imperial units, US customary units, units related to the <em>cgs system</em>, and a range of
+            specialised units.
+        </li>
+    </ul>
+</div>
+
+    <div class="content-section">
+        <h2 id="udunits2-aliases-for-unit-names-and-symbols-and-deprecated-units-and-aliases">
+            UDUNITS2 <em>aliases</em> for unit names and symbols, and deprecations
+        </h2>
+        <p>
+            One specific feature of UDUNITS2 is that in addition to the standardised unit names and symbols, variant spellings and symbols are allowed
+            as <em>aliases</em>. For example, the quantity <em>thermodynamic temperature</em> has SI unit <strong><code>kelvin</code></strong>
+            (<strong><code>K</code></strong>), and UDUNITS2 allows the following aliases: “degree_kelvin”, “degree_K”, “degreeK”, “deg_K”, “degK”,
+            and the corresponding plural variants, as well as the symbol “°K”. While this may be convenient when dealing with legacy data, it also
+            creates problems. Therefore, SI is strict about using only one symbol for each unit, and expressly deprecates alternative acronyms and symbols.
+        </p>
+        <p>
+            A consequence of the 2019 SI revision is that the unit <em>faraday</em>, which is not recognized by SI, has a fixed constant relationship
+            to the SI base unit <strong><code>coulomb</code></strong>. The three UDUNITS2 units “chemical_faraday”, “physical_faraday”, and “C12_faraday”,
+            whose values were experimentally determined, are deprecated in UDUSI and replaced by <strong><code>faraday</code></strong>. In addition, the
+            two units “work_year” and “work_week” are deprecated by UDUSI because they have only limited or regional applicability.
+        </p>
+        <p>
+            All deprecated units, acronyms, and symbols are shown with a grey tint and background on the web pages, but they are still available in
+            the XML files for use with the UDUNITS2 software tools.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2 id="other-changes">Other changes</h2>
+        <p>
+            The definition text has been substantially revised for all UDUNITS2 time units related to month and year, but their actual values have not 
+            been changed (even though they may be slightly outdated). For a few other units, comments or notes have been added, and pre-existing text 
+            from UDUNITS2 has been revised and updated.
+        </p>
+        <p>
+            To accommodate the information available on the web pages several new XML elements have been added to the UDUSI XML files, but these are silently
+            ignored by the UDUNITS2 software (see the Technical Details page).
+        </p>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            window.parent.postMessage({
+                type: 'page-info',
+                title: document.title,
+                provenance: document.getElementById('provenance-data')?.innerHTML || ''
+            }, '*');
+        });
+    </script>
+
+</body>
+</html>
+

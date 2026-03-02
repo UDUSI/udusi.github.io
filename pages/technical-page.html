@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UDUNITS2 Technical Requirements</title>
+    <link rel="stylesheet" href="../css/descriptive-page.css">
+    <!-- Optional: Include MathJax for mathematical formulas if needed -->
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$']],
+                displayMath: [['$$','$$']],
+                processEscapes: true
+            }
+        });
+    </script>
+    -->
+</head>
+<body>
+    <!-- Hidden provenance data that will be used by the main page -->
+    <div id="provenance-data">
+        <p>This Technical Details page was last updated on ___TIMESTAMP___.</p>
+    </div>
+    <div>
+        <p>
+            <i>Note that the information below has been gathered through experimentation with the UDUNITS2 XML files. 
+                It is not a formal specification of the logical content of UDUNITS2 files.</i>
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2 id="outline-of-the-xml-files">Outline of the XML Files</h2>
+        <ul>
+            <li>
+                Units must be included in a well-defined order because their definitions are successively built upon previously defined units.
+                This means that the SI Base Units must be defined first, followed by the SI Special Named Units, and so on. As a result,
+                the SI Constants, whose definitions depend on SI Special Named Units, can only appear in the file after those units have been defined, 
+                even though the constants are conceptually more fundamental in that they are used to define the SI Base Units.
+            </li>
+            <li>
+                When a new unit or unit alias is defined in the XML files, it connects to previously defined units via the
+                <code>&lt;def&gt;....&lt;/def&gt;</code> element. SI base units are by definition not related to other units, which in the
+                XML files is handled by replacing the <code>&lt;def&gt;....&lt;/def&gt;</code> element with the <code>&lt;base/&gt;</code> element.
+            </li>
+            <li>
+                UDUNITS2 does not allow multiple “standard” units (as opposed to alias units) that share the same basic definition. For example,
+                the two SI Special Named Units <code>hertz</code> and <code>becquerel</code> share the same basic definition <code>1/s</code>.
+                To resolve this, <code>becquerel</code> is designated as an <em>alias</em> for <code>hertz</code> in the XML file, despite the
+                fact that they refer to entirely different concepts and physical quantities. From a user perspective, this has little impact,
+                except that UDUNITS2 allows conversion between the two units.
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2 id="xml-files-available-to-download">UDUSI XML Files Available to Download</h2>
+        <p>There are two UDUSI options for downloading XML files for use with the UDUNITS2 software package:</p>
+        <ul>
+            <li>
+                Option 1 combines all information into one XML file, which is likely preferable in many use cases.
+            </li>
+            <li>
+                <p>
+                    Option 2 keeps the information from different sources as separate XML files, which enables tracing information back to its source.
+                    These files are then referenced via XML <code>&lt;include&gt;</code> statements in the XML file used by UDUNITS2
+                    (similar to their handling in the original UDUNITS2 files). In this context, the different sources are SI and UDUNITS2
+                    (see the table below). UDUSI provides some minor additions and adjustments which are kept in separate files, as indicated
+                    by the file names, or within the <code>unit_class</code> element of the XML file, and are shown in the web page listings.
+                    Here is a list of the files:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>File name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>udusi.xml</td>
+                            <td>File to use with UDUNITS2 (includes the files below)</td>
+                        </tr>
+                        <tr>
+                            <td>udusi-SIPrefix.xml</td>
+                            <td>SI prefixes</td>
+                        </tr>
+                        <tr>
+                            <td>udusi-UDUprefix.xml</td>
+                            <td>Additional prefix information from UDUNITS2</td>
+                        </tr>
+                        <tr>
+                            <td>udusi-SIBaseUnit.xml</td>
+                            <td>SI Base Units</td>
+                        </tr>
+                        <tr>
+                            <td><span style="white-space: nowrap;">udusi-UDUSIAddedConstant.xml</span></td>
+                            <td>UDUSI definition of constant π (pi)</td>
+                        </tr>
+                        <tr>
+                            <td>udusi-SISpecialNamedUnit.xml</td>
+                            <td>SI Special Named Units</td>
+                        </tr>
+                        <tr>
+                            <td>udusi-SIConstant.xml</td>
+                            <td>SI Defining Constants</td>
+                        </tr>
+                        <tr>
+                            <td>udusi-nonSIUnit.xml</td>
+                            <td>Non-SI Units accepted for use with SI units</td>
+                        </tr>
+                        <tr>
+                            <td>udusi-MeasurementUnit.xml</td>
+                            <td>SI “helper definition” of the non-SI unit <code>gram</code></td>
+                        </tr>
+                        <tr>
+                            <td>udusi-UDUbase.xml</td>
+                            <td>(*) UDUNITS2 additional information to SI Base Units derived from the file <code>udunits2-base.xml</code></td>
+                        </tr>
+                        <tr>
+                            <td>udusi-UDUderived.xml</td>
+                            <td>(*) UDUNITS2 additional information to SI Special Named Units derived from the file <code>udunits2-derived.xml</code></td>
+                        </tr>
+                        <tr>
+                            <td>udusi-UDUaccepted.xml</td>
+                            <td>(*) UDUNITS2 information from the file <code>udunits2-accepted.xml</code></td>
+                        </tr>
+                        <tr>
+                            <td>udusi-UDUcommon.xml</td>
+                            <td>All other units defined by UDUNITS2 derived from the file <code>udunits2-common.xml</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>  (*) Information that overlaps or is superseded by SI has been removed.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2 id="structure-of-the-xml-files">Structure of the XML Files</h2>
+        <p>
+            <img src="./xml-graphs.svg" alt="XML Tree Visualization"/>
+        </p>
+        <p>
+            The order of subelements within each <code>&lt;prefix&gt;....&lt;/prefix&gt;</code> or <code>&lt;unit&gt;....&lt;/unit&gt;</code>
+            is important.
+        </p>
+        <p>
+            The UDUSI XML files contain various elements:
+        </p>
+        <table>
+            <thead>
+                <tr>
+                <th>XML element</th>
+                <th>Description</th>
+                <th>UDUNITS2</th>
+                <th>UDUSI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td><strong>HEADER</strong></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;unit-system&gt;</code></td>
+                    <td>Main container</td>
+                    <td>required</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;<code>&lt;copyright&gt;</code></td>
+                    <td></td>
+                    <td>ignored</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;<code>&lt;license&gt;</code></td>
+                    <td></td>
+                    <td>ignored</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;<code>&lt;provenance&gt;</code></td>
+                    <td></td>
+                    <td>ignored</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><strong>PREFIXES</strong></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&emsp;<code>&lt;prefix&gt;</code></td>
+                    <td>Prefix container</td>
+                    <td>required</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;value&gt;</code></td>
+                    <td>Prefix numeric value</td>
+                    <td>required</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;name&gt;</code></td>
+                    <td>Prefix name</td>
+                    <td>required</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;symbol&gt;</code></td>
+                    <td>Prefix symbol</td>
+                    <td>required</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;uri&gt;</code></td>
+                    <td>URI to SI Reference Point</td>
+                    <td>ignored</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><strong>UNITS</strong></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&emsp;<code>&lt;unit&gt;</code></td>
+                    <td>Unit container</td>
+                    <td>required</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>
+                        &emsp;&emsp;<code>&lt;base/&gt;</code><br/>
+                        &emsp;&emsp;<code>&lt;dimensionless/&gt;</code><br/>
+                        &emsp;&emsp;<code>&lt;def&gt;</code>
+                    </td>
+                    <td>Unit definition<br/>(one of these)</td>
+                    <td>required</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;alt_def&gt;</code></td>
+                    <td>SI units definition</td>
+                    <td>ignored</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;name&gt;</code></td>
+                    <td>Unit name container</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;&emsp;<code>&lt;singular&gt;</code></td>
+                    <td>Singular name for unit</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>
+                        &emsp;&emsp;&emsp;<code>&lt;plural&gt;</code><br>
+                        &emsp;&emsp;&emsp;<code>&lt;noplural/&gt;</code>
+                    </td>
+                    <td>Plural name for unit, or<br/> expressly no plural name</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;symbol&gt;</code></td>
+                    <td>Unit symbol</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;definition&gt;</code></td>
+                    <td>Text describing the unit definition</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;aliases&gt;</code></td>
+                    <td>Aliases container</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;&emsp;<code>&lt;name&gt;</code></td>
+                    <td>Container for unit name alias</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;&emsp;&emsp;<code>&lt;singular&gt;</code></td>
+                    <td>Alias singular name</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>
+                        &emsp;&emsp;&emsp;&emsp;<code>&lt;plural&gt;</code><br/>
+                        &emsp;&emsp;&emsp;&emsp;<code>&lt;noplural/&gt;</code>
+                    </td>
+                    <td>Alias plural name, or<br/>expressly no plural alias name</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;&emsp;<code>&lt;symbol&gt;</code></td>
+                    <td>Unit alias symbols</td>
+                    <td>optional</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;&emsp;<code>&lt;source&gt;</code></td>
+                    <td>Which UDUNITS2 source file for alias</td>
+                    <td>ignored</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;comment&gt;</code></td>
+                    <td>Textual comment (usually from UDUNITS2 XML file)</td>
+                    <td>ignored</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;unit_uri&gt;</code></td>
+                    <td>URI to SI Reference Point</td>
+                    <td>ignored</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;note&gt;</code></td>
+                    <td>Textual comment</td>
+                    <td>ignored</td>
+                    <td>optional</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>internal_note</code></td>
+                    <td>Textual comment (for XML only)</td>
+                    <td>ignored</td>
+                    <td>ignored</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;unit_class&gt;</code></td>
+                    <td>Unit category</td>
+                    <td>ignored</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;<code>&lt;quantities&gt;</code></td>
+                    <td>Typical physical quantity</td>
+                    <td>ignored</td>
+                    <td>optional</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="content-section">
+        <h2 id="udunts2-rules-for-pluralisation-of-units">UDUNITS2 rules for pluralisation of units (preliminary)</h2>
+        <p>
+            For most units, the XML files do not specify a plural variant of the name or symbol.
+            In these cases the following standard rules are applied by the UDUNITS2 software:
+        </p>
+        <p>
+
+            <strong>Basic Rules:</strong></p>
+        <ul>
+            <li>
+                For a single character unit name, just append “s” (e.g. “m” -&gt; “ms”).
+            </li>
+            <li>
+                For longer unit names, different rules apply based on the ending:
+                <ul>
+                    <li>Words ending in “y”:
+                        <ul>
+                            <li>
+                                If the “y” is preceded by a vowel (a,e,i,o,u), just append “s”. Examples: “ray” -&gt; “rays”.
+                            </li>
+                            <li>
+                                If the “y” is preceded by a consonant, replace “y” with “ies”. Examples: “body” -&gt; “bodies”.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Words ending in certain patterns get “es”:
+                        <ul>
+                            <li>
+                                Words ending in “s”, “x”, or “z” get “es”. Examples: “box” -&gt; “boxes”, “gas” -&gt; “gases”.
+                            </li>
+                            <li>
+                                Words ending in “ch” or “sh” get “es”. Examples: “inch” -&gt; “inches”, “bush” -&gt; “bushes”.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Default case:
+                        <ul>
+                            <li>
+                                For all other endings, just append “s”. Examples: “meter” -&gt; “meters”, “gram” -&gt; “grams”.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+<script>
+        window.addEventListener('load', () => {
+            window.parent.postMessage({
+                type: 'page-info',
+                title: document.title,
+                provenance: document.getElementById('provenance-data')?.innerHTML || ''
+            }, '*');
+        });
+    </script>
+
+</body>
+</html>

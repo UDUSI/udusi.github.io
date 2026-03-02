@@ -1,0 +1,138 @@
+/* Search overlay in top bar */
+
+.search-toggle-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: white;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    line-height: 1;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.search-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Overlay covers the right half of the top bar */
+.search-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    font-size: 0.6em;
+    background-color: #4a90e2; /* same as top bar */
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 8px;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1050;
+}
+
+.search-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.search-overlay input[type="search"] {
+    flex: 1;
+    padding: 3px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: inherit;
+    outline: none;
+    min-width: 0;
+}
+
+.search-overlay input[type="search"]::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.search-overlay input[type="search"]:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: white;
+}
+
+/* Remove default search input cancel button (webkit) */
+.search-overlay input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+.search-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.4em;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+
+.search-close-btn:hover {
+    opacity: 1;
+}
+
+/* Dropdown results */
+.search-dropdown {
+    position: fixed;
+    top: 44px; /* just below the top bar */
+    right: 12px;
+    width: calc(50% - 24px);
+    font-size: 0.6em; /* match .search-overlay font-size */
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1200;
+    display: none;
+}
+
+.search-dropdown.active {
+    display: block;
+}
+
+.search-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+}
+
+.search-dropdown li {
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: inherit;
+    color: #333;
+    border-left: 3px solid transparent;
+    transition: background-color 0.1s, border-color 0.1s;
+}
+
+.search-dropdown li:hover,
+.search-dropdown li.highlighted {
+    background-color: #f0f6ff;
+    border-left-color: #4a90e2;
+}
+
+.search-dropdown .search-hint {
+    padding: 8px 14px;
+    font-size: 0.85em;
+    color: #888;
+    cursor: default;
+    border-left: none;
+}
+
+.search-dropdown .search-hint:hover {
+    background: none;
+    border-left-color: transparent;
+}

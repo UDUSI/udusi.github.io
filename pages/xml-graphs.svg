@@ -1,0 +1,552 @@
+<svg
+   viewBox="0 0 900 450"
+   font-family="monospace"
+   font-size="14px"
+   version="1.1"
+   id="svg52"
+   sodipodi:docname="xml-graphs.svg"
+   inkscape:version="1.4.1-rc (d9e8dc1fe0, 2025-03-10)"
+   width="900"
+   height="450"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs52" />
+  <sodipodi:namedview
+     id="namedview52"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showguides="true"
+     inkscape:zoom="2.0144444"
+     inkscape:cx="736.43135"
+     inkscape:cy="328.8748"
+     inkscape:window-width="1920"
+     inkscape:window-height="1200"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g52" />
+  <!-- Background styling with color-blind friendly palette -->
+  <style
+     id="style1">
+    .component-title { font-weight: bold; fill: #000000; font-size: 16px; }
+    .node-text { fill: #000000; }
+    .special-node { fill: #0072B2; font-weight: bold; } /* Blue that's distinguishable for color blindness */
+    .note-text { fill: #555555; font-style: italic; font-size: 12px; }
+    .new-element { fill: #CC79A7; font-style: italic; font-size: 12px; } /* Pink/Purple that's distinguishable */
+    .connector { stroke: #000000; stroke-width: 1.5; }
+  </style>
+  <!-- UNIT-SYSTEM Component -->
+  <g
+     transform="translate(20,30)"
+     id="g8">
+    <text
+       x="0"
+       y="0"
+       class="component-title"
+       id="text1">UNIT-SYSTEM</text>
+    <text
+       x="0"
+       y="30"
+       class="node-text"
+       id="text2">unit-system</text>
+    <path
+       d="M 0,35 V 130"
+       class="connector"
+       fill="none"
+       id="path2" />
+    <path
+       d="M 0,50 H 20"
+       class="connector"
+       fill="none"
+       id="path3" />
+    <text
+       x="25"
+       y="55"
+       class="node-text"
+       id="text3">license <tspan
+   class="new-element"
+   id="tspan3">(new)</tspan></text>
+    <path
+       d="M 0,70 H 20"
+       class="connector"
+       fill="none"
+       id="path4" />
+    <text
+       x="25"
+       y="75"
+       class="node-text"
+       id="text4">copyright <tspan
+   class="new-element"
+   id="tspan4">(new)</tspan></text>
+    <path
+       d="M 0,90 H 20"
+       class="connector"
+       fill="none"
+       id="path5" />
+    <text
+       x="25"
+       y="95"
+       class="node-text"
+       id="text5">provenance <tspan
+   class="new-element"
+   id="tspan5">(new)</tspan></text>
+    <path
+       d="M 0,110 H 20"
+       class="connector"
+       fill="none"
+       id="path7" />
+    <text
+       x="25"
+       y="115"
+       class="special-node"
+       id="text7">PREFIX <tspan
+   class="note-text"
+   id="tspan7">(r)</tspan></text>
+    <path
+       d="M 0,130 H 20"
+       class="connector"
+       fill="none"
+       id="path8" />
+    <text
+       x="25"
+       y="135"
+       class="special-node"
+       id="text8">UNIT <tspan
+   class="note-text"
+   id="tspan8">(r)</tspan></text>
+  </g>
+  <!-- PREFIX Component -->
+  <g
+     transform="translate(200,30)"
+     id="g14">
+    <text
+       x="0"
+       y="0"
+       class="component-title"
+       id="text9">PREFIX</text>
+    <text
+       x="0"
+       y="30"
+       class="node-text"
+       id="text10">prefix</text>
+    <path
+       d="m 0,35 v 75"
+       class="connector"
+       fill="none"
+       id="path10" />
+    <path
+       d="M 0,50 H 20"
+       class="connector"
+       fill="none"
+       id="path11" />
+    <text
+       x="25"
+       y="55"
+       class="node-text"
+       id="text11">value</text>
+    <path
+       d="M 0,70 H 20"
+       class="connector"
+       fill="none"
+       id="path12" />
+    <text
+       x="25"
+       y="75"
+       class="node-text"
+       id="text12">name</text>
+    <path
+       d="M 0,90 H 20"
+       class="connector"
+       fill="none"
+       id="path13" />
+    <text
+       x="25"
+       y="95"
+       class="node-text"
+       id="text13">symbol</text>
+    <path
+       d="M 0,110 H 20"
+       class="connector"
+       fill="none"
+       id="path14" />
+    <text
+       x="25"
+       y="115"
+       class="node-text"
+       id="text14">uri <tspan
+   class="new-element"
+   id="tspan14">(new)</tspan></text>
+  </g>
+  <!-- UNIT Component -->
+  <g
+     transform="translate(350,30)"
+     id="g32">
+    <text
+       x="0"
+       y="0"
+       class="component-title"
+       id="text15">UNIT</text>
+    <text
+       x="0"
+       y="30"
+       class="node-text"
+       id="text16">unit</text>
+    <path
+       d="M 0,35 V 310"
+       class="connector"
+       fill="none"
+       id="path16" />
+    <path
+       d="M 0,50 V 70"
+       class="connector"
+       fill="none"
+       id="path17" />
+    <path
+       d="M 0,70 H 10"
+       class="connector"
+       fill="none"
+       id="path18" />
+    <path
+       d="M 10,50 V 90"
+       class="connector"
+       fill="none"
+       id="path19" />
+    <path
+       d="m 9.55,49.86141 h 9.9"
+       class="connector"
+       fill="none"
+       id="path20" />
+    <text
+       x="24.750004"
+       y="55"
+       class="node-text"
+       id="text20">def</text>
+    <path
+       d="m 9.55,70 h 9.9"
+       class="connector"
+       fill="none"
+       id="path21" />
+    <text
+       x="24.750004"
+       y="75"
+       class="node-text"
+       id="text21">base/</text>
+    <path
+       d="m 9.55,90.13859 h 9.9"
+       class="connector"
+       fill="none"
+       id="path22" />
+    <text
+       x="24.750004"
+       y="95"
+       class="node-text"
+       id="text22">dimensionless/</text>
+    <path
+       d="M 0,110 H 20"
+       class="connector"
+       fill="none"
+       id="path23" />
+    <text
+       x="25"
+       y="115"
+       class="node-text"
+       id="text23">alt_def <tspan
+   class="new-element"
+   id="tspan23">(new)</tspan></text>
+    <path
+       d="M 0,130 H 20"
+       class="connector"
+       fill="none"
+       id="path24" />
+    <text
+       x="25"
+       y="135"
+       class="special-node"
+       id="text24">NAME</text>
+    <path
+       d="M 0,150 H 20"
+       class="connector"
+       fill="none"
+       id="path25" />
+    <text
+       x="25"
+       y="155"
+       class="node-text"
+       id="text25">symbol</text>
+    <path
+       d="M 0,170 H 20"
+       class="connector"
+       fill="none"
+       id="path26" />
+    <text
+       x="25"
+       y="175"
+       class="node-text"
+       id="text26">definition</text>
+    <path
+       d="M 0,190 H 20"
+       class="connector"
+       fill="none"
+       id="path27" />
+    <text
+       x="25"
+       y="195"
+       class="special-node"
+       id="text27">ALIASES</text>
+    <path
+       d="M 0,210 H 20"
+       class="connector"
+       fill="none"
+       id="path28" />
+    <text
+       x="25"
+       y="215"
+       class="node-text"
+       id="text28">comment</text>
+    <path
+       d="M 0,230 H 20"
+       class="connector"
+       fill="none"
+       id="path29" />
+    <text
+       x="25"
+       y="235"
+       class="node-text"
+       id="text29">unit_uri <tspan
+   class="new-element"
+   id="tspan29">(new)</tspan></text>
+    <path
+       d="M 0,250 H 20"
+       class="connector"
+       fill="none"
+       id="path30" />
+    <text
+       x="25"
+       y="255"
+       class="node-text"
+       id="text30">note <tspan
+   class="new-element"
+   id="tspan30">(new)</tspan></text>
+    <path
+       d="M 0,270 H 20"
+       class="connector"
+       fill="none"
+       id="path31-new" />
+    <text
+       x="25"
+       y="275"
+       class="node-text"
+       id="text31-new">internal_note <tspan
+   class="new-element"
+   id="tspan31-new">(new)</tspan></text>
+    <path
+       d="M 0,290 H 20"
+       class="connector"
+       fill="none"
+       id="path31" />
+    <text
+       x="25"
+       y="295"
+       class="node-text"
+       id="text31">unit_class <tspan
+   class="new-element"
+   id="tspan31">(new)</tspan></text>
+    <path
+       d="M 0,310 H 20"
+       class="connector"
+       fill="none"
+       id="path32" />
+    <text
+       x="25"
+       y="315"
+       class="node-text"
+       id="text32">quantities <tspan
+   class="new-element"
+   id="tspan32">(new)</tspan></text>
+  </g>
+  <!-- ALIASES Component -->
+  <g
+     transform="translate(550,30)"
+     id="g37">
+    <text
+       x="0"
+       y="0"
+       class="component-title"
+       id="text33">ALIASES</text>
+    <text
+       x="0"
+       y="30"
+       class="node-text"
+       id="text34">aliases</text>
+    <path
+       d="M 0,35 V 90"
+       class="connector"
+       fill="none"
+       id="path34" />
+    <path
+       d="M 0,50 H 20"
+       class="connector"
+       fill="none"
+       id="path35" />
+    <text
+       x="25"
+       y="55"
+       class="special-node"
+       id="text35">NAME <tspan
+   class="note-text"
+   id="tspan35">(r)</tspan></text>
+    <path
+       d="M 0,70 H 20"
+       class="connector"
+       fill="none"
+       id="path36" />
+    <text
+       x="25"
+       y="75"
+       class="node-text"
+       id="text36"
+       style="fill:#000000;fill-opacity:1">symbol <tspan
+   class="note-text"
+   id="tspan36"
+   style="fill:#000000;fill-opacity:1">(l)</tspan></text>
+    <path
+       d="M 0,90 H 20"
+       class="connector"
+       fill="none"
+       id="path37" />
+    <text
+       x="25"
+       y="95"
+       class="node-text"
+       id="text37">source <tspan
+   class="new-element"
+   id="tspan37">(new)</tspan></text>
+  </g>
+  <!-- NAME Component -->
+  <g
+     transform="translate(700,30)"
+     id="g46">
+    <text
+       x="0"
+       y="0"
+       class="component-title"
+       id="text38">NAME</text>
+    <text
+       x="0"
+       y="30"
+       class="node-text"
+       id="text39">name</text>
+    <path
+       d="M 0,35 V 90"
+       class="connector"
+       fill="none"
+       id="path39" />
+    <path
+       d="M 0,50 H 20"
+       class="connector"
+       fill="none"
+       id="path40" />
+    <text
+       x="25"
+       y="55"
+       class="node-text"
+       id="text40">singular</text>
+    <!-- L-shape connector (└) to horizontal line - moved down -->
+    <path
+       d="M 0,90 H 10.071705"
+       class="connector"
+       fill="none"
+       id="path41"
+       sodipodi:nodetypes="cc" />
+    <!-- Horizontal line with vertical stub (┤) - moved down -->
+    <path
+       d="m 11.27126,70 v 40"
+       class="connector"
+       fill="none"
+       id="path42" />
+    <path
+       d="m 11.27126,90 h 10"
+       class="connector"
+       fill="none"
+       id="path43" />
+    <!-- Three branches - moved down and made shorter -->
+    <path
+       d="m 11.27126,70 h 10"
+       class="connector"
+       fill="none"
+       id="path44"
+       sodipodi:nodetypes="cc" />
+    <text
+       x="26.271261"
+       y="75"
+       class="node-text"
+       id="text44">*nothing*</text>
+    <path
+       d="m 11.27126,90 h 10"
+       class="connector"
+       fill="none"
+       id="path45" />
+    <text
+       x="26.271261"
+       y="95"
+       class="node-text"
+       id="text45">plural</text>
+    <path
+       d="m 11.27126,110 h 10"
+       class="connector"
+       fill="none"
+       id="path46" />
+    <text
+       x="26.271261"
+       y="115"
+       class="node-text"
+       id="text46">noplural/</text>
+  </g>
+  <!-- Legend -->
+  <g
+     transform="translate(20,350)"
+     id="g52">
+    <text
+       x="0"
+       y="-2"
+       class="component-title"
+       id="text47">Legend:</text>
+    <text
+       x="0"
+       y="42"
+       class="node-text"
+       id="text48"><tspan
+   class="new-element"
+   id="tspan47">(new)</tspan> - New element added in UDUSI</text>
+    <text
+       x="0"
+       y="60"
+       class="node-text"
+       id="text49"><tspan
+   style="font-style:italic"
+   id="tspan1">(r)</tspan> - Repeating element</text>
+    <text
+       x="0"
+       y="78"
+       class="node-text"
+       id="text50"
+       style="fill:#000000"><tspan
+   style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;font-family:monospace;-inkscape-font-specification:'monospace, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+   id="tspan2">(l)</tspan> - List element</text>
+    <text
+       x="2"
+       y="24"
+       class="node-text"
+       id="text51"><tspan
+   class="special-node"
+   id="tspan50">CAPITAL</tspan> - Reference to another component</text>
+  </g>
+</svg>

@@ -1,0 +1,173 @@
+/*
+ * Enhanced Deprecation Styles
+ * Handles all three deprecation scenarios:
+ * 1. Entire unit card deprecated
+ * 2. All aliases deprecated
+ * 3. Individual elements deprecated
+ */
+
+/*
+ * SCENARIO 1: DEPRECATED UNIT CARD
+ * When the entire unit is deprecated
+ */
+
+/* Base styling for deprecated unit cards */
+.unit-card.deprecated {
+    background-color: #f0f0f0 !important; /* Darker grey background */
+    border: 1px solid #bbb !important; /* Border around the whole card */
+    border-left: 3px solid #bbb !important; /* Keep the thicker left border */
+}
+
+/* Unit class box in deprecated cards */
+.unit-card.deprecated .unit-class-box {
+    background-color: #f0f0f0 !important;
+    border-color: #aaa !important;
+    color: #888 !important;
+}
+
+/* Unit name in deprecated cards */
+.unit-card.deprecated .unit-name {
+    color: #888 !important;
+}
+
+.unit-card.deprecated .unit-name a {
+    color: #7baad7 !important;
+    border-bottom: 1px dotted #7baad7 !important;
+}
+
+.unit-card.deprecated .unit-name a:hover {
+    border-bottom: 1px solid #7baad7 !important;
+    color: #6699cc !important;
+}
+
+/* Unit symbol in deprecated cards */
+.unit-card.deprecated .unit-symbol {
+    color: #888 !important;
+    border-color: #aaa !important;
+    background-color: #f0f0f0 !important; /* Match the card background */
+}
+
+/* Definition values in deprecated cards - ensure same background */
+.unit-card.deprecated .def-value,
+.unit-card.deprecated .alt-def-value {
+    color: #888 !important;
+    background-color: #f0f0f0 !important; /* Match the card background */
+    border-color: #aaa !important;
+}
+
+/* Quantity labels in deprecated cards - comprehensive styling */
+.unit-card.deprecated .quantity-label-item {
+    opacity: 0.9 !important; /* Slightly reduce opacity */
+}
+
+.unit-card.deprecated .quantity-acronym {
+    background-color: #888 !important; /* Grey background for acronym part */
+}
+
+.unit-card.deprecated .quantity-description,
+.unit-card.deprecated .quantity-description-only {
+    border-color: #888 !important;
+    color: #888 !important;
+    background-color: #f0f0f0 !important; /* Match the card background */
+}
+
+/* Definition text in deprecated cards */
+.unit-card.deprecated .definition-text {
+    color: #888 !important;
+}
+
+/*
+ * SCENARIO 2: ALL ALIASES DEPRECATED
+ * When the entire aliases section is deprecated
+ */
+
+/* Entire alias section deprecated */
+.alias-section.deprecated {
+    color: #888 !important;
+    font-style: italic !important;
+    background-color: #f0f0f0 !important; /* Added grey background */
+    padding: 4px 8px !important; /* Add some padding for better appearance */
+    border-radius: 3px !important; /* Round the corners slightly */
+    display: inline-block !important; /* Ensure background only covers the content */
+}
+
+.alias-section.deprecated .alias-label {
+    color: #888 !important;
+}
+
+/*
+ * SCENARIO 3: INDIVIDUAL ELEMENTS DEPRECATED
+ * When only specific elements are deprecated
+ */
+
+/* Individual deprecated spans (for aliases) */
+span.deprecated {
+    color: #888 !important;
+    font-style: italic !important;
+    background-color: #f0f0f0 !important; /* Added grey background */
+    padding: 0 3px !important; /* Small padding */
+    border-radius: 2px !important; /* Slightly rounded corners */
+}
+
+/* Individual deprecated unit names */
+.unit-name.deprecated {
+    color: #888 !important;
+}
+
+.unit-name.deprecated a {
+    color: #7baad7 !important;
+    border-bottom: 1px dotted #7baad7 !important;
+}
+
+.unit-name.deprecated a:hover {
+    border-bottom: 1px solid #7baad7 !important;
+    color: #6699cc !important;
+}
+
+/* Individual deprecated unit symbols */
+.unit-symbol.deprecated {
+    color: #888 !important;
+    border-color: #aaa !important;
+    background-color: #f0f0f0 !important;
+}
+
+/* Unicode handling in deprecated elements */
+span.deprecated .has-unicode,
+.unit-symbol.deprecated .has-unicode {
+    color: #888 !important;
+    border-bottom: 1px dotted #888 !important;
+}
+
+span.deprecated .has-unicode:hover .unicode-info,
+.unit-symbol.deprecated .has-unicode:hover .unicode-info {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Deprecated definition values */
+.def-value.deprecated,
+.alt-def-value.deprecated {
+    color: #888 !important;
+    background-color: #f0f0f0 !important;
+    border-color: #ccc !important;
+}
+
+/* Styling for URL links in deprecated units */
+.url-link.deprecated {
+    color: #666666;
+    text-decoration: underline;
+}
+
+.url-link.deprecated:hover {
+    color: #444444;
+}
+
+/* Ensure consistent styling within deprecated unit cards */
+.unit-card.deprecated .url-link {
+    color: #666666;
+    text-decoration: underline;
+}
+
+.unit-card.deprecated .url-link:hover {
+    color: #444444;
+}

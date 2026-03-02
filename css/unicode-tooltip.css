@@ -1,0 +1,37 @@
+/* Tooltip for non-ASCII Unicode characters (shared by unit-cards and prefixes pages) */
+
+.has-unicode {
+    border-bottom: 1px dotted #aaa;
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.unicode-info {
+    visibility: hidden;
+    background-color: rgba(40, 40, 100, 0.85);
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    font-size: 12px !important;
+    line-height: 1.4;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-family: monospace;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    min-width: 120px;
+    max-width: 250px;
+    word-wrap: normal;
+}
+
+.has-unicode:hover .unicode-info {
+    visibility: visible;
+    opacity: 1;
+}

@@ -1,0 +1,305 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.unit-card {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.unit-card .anchor-link {
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    font-size: 0.75rem;
+    line-height: 1;
+    text-decoration: none;
+    visibility: hidden;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+}
+
+.unit-card:hover .anchor-link {
+    visibility: visible;
+}
+
+.unit-card .anchor-link:hover {
+    opacity: 1.0;
+}
+
+.unit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2px;
+}
+
+/* Left section of the header */
+.unit-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+/* Middle section for quantity labels */
+.quantity-labels-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+    padding: 0 15px;
+}
+
+/* Right section for unit class */
+.unit-class-container {
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Unit class display */
+.unit-class-box {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: #f1f5f9;
+    border: 2px solid #4a90e2;
+    border-radius: 6px;
+    color: #4a5568;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 80px;
+}
+
+.name-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.name-symbol-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-grow: 0;
+}
+
+.unit-name {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.unit-name a {
+    color: #4a90e2;
+    text-decoration: none;
+    border-bottom: 1px dotted #4a90e2;
+}
+
+.unit-name a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #4a90e2;
+    color: #357abd;
+}
+
+.unit-symbol {
+    font-size: 1.2em;
+    color: #4a90e2;
+    font-weight: 500;
+    padding: 2px 8px;
+    background-color: #f8f9fa;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 8px;
+    border-color: #4a90e2;
+    margin-right: 10px;
+    position: relative;
+}
+
+/* Unicode tooltip - base styles in unicode-tooltip.css */
+
+.unit-symbol .unicode-info,
+.alias-section .unicode-info {
+    font-size: 12px !important;
+    padding: 4px 8px;
+}
+
+.alias-section .has-unicode {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #777;
+}
+
+.definition-values {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.def-value {
+    color: #222;
+    font-size: 1.1em;
+    font-family: monospace;
+    background-color: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 0;
+}
+
+.alt-def-value {
+    color: #444;
+    font-size: 1em;
+    font-family: monospace;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: #f5f5f5;
+    border: 1px dashed #ccc;
+}
+
+.alias-section {
+    margin-top: 5px;
+    color: #666;
+    font-size: 1.0em;
+}
+
+.alias-label {
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.unit-definition {
+    color: #333;
+    margin-top: 15px;
+}
+
+.definition-text {
+    margin-top: 10px;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.comment-text {
+    margin-top: 8px;
+    color: #666;
+    font-style: italic;
+}
+
+.si-uri {
+    color: #4a90e2;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.si-uri:hover {
+    text-decoration: underline;
+}
+
+.external-link {
+    color: #4a90e2;
+    text-decoration: none;
+    margin-left: 1px;
+    font-size: 1.2em;
+    border: 1px solid #4a90e2;
+    border-radius: 0px;
+}
+
+.external-link:hover {
+    color: #357abd;
+    border-color: #357abd;
+    background-color: #f8f9fa;
+}
+
+#provenance-data {
+    display: none;
+}
+
+/* New styles for the quantity label item */
+.quantity-label-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+/* Updated style for quantity label to include description */
+.quantity-label-combined {
+    display: inline-flex;
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: 0.8em;
+}
+
+/* Style for the acronym part */
+.quantity-acronym {
+    background-color: #2c7a7b;  /* Teal */
+    color: white;
+    padding: 2px 8px;
+    text-align: center;
+}
+
+/* Style for the description part */
+.quantity-description {
+    border: 1px solid #2c7a7b;
+    border-left: none;
+    padding: 1px 8px;
+    color: #333;
+    white-space: nowrap;
+    background-color: #f8f9fa;
+}
+
+/* Style for when there's only a description (no acronym) */
+.quantity-description-only {
+    border: 1px solid #2c7a7b;
+    border-radius: 4px;
+    padding: 1px 8px;
+    color: #333;
+    white-space: nowrap;
+    background-color: #f8f9fa;
+    font-size: 0.8em;
+}
+
+/* URL links in text content */
+.url-link {
+    color: #0066cc;
+    text-decoration: underline;
+    transition: color 0.2s ease-in-out;
+    margin-left: 2px;
+}
+
+.url-link:hover {
+    color: #004499;
+}
+
+h1 {
+    color: #4a90e2;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}

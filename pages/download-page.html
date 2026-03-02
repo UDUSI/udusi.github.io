@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download UDUNITS2 Files</title>
+    <link rel="stylesheet" href="../css/download-page.css">
+</head>
+<body>
+
+    <div class="intro-section">
+        <p>
+            The UDUSI XML files containing UDUNITS2 unit definitions are designed to be drop-in replacements
+            for the original UDUNITS2 XML files. They are available for download as zip archives.
+            Choose from two options below based on your needs. <b>Option 1</b> combines all information into
+            a single XML file. <b>Option 2</b> provides XML definitions for the UDUNITS2 system as separate
+            files that mirror the different source materials. If you're not specifically interested in tracing the
+            sources of information, option 1 is simpler to use and requires managing fewer files.
+        </p>
+    </div>
+
+    <div class="download-section">
+        <div class="download-section-text">
+            <div class="download-title">Option 1: Single Unified XML File</div>
+            <div class="download-description">
+                All information combined into the file <code>udusi-combined.xml</code>.
+            </div>
+        </div>
+        <div class="download-section-action">
+            <a href="../downloads/udusi-combined.zip" class="download-link" data-file-id="udusi-combined">Download Unified File</a>
+            <div class="file-info" id="udusi-combined-info">Last updated: March 2025</div>
+        </div>
+    </div>
+
+    <div class="download-section">
+        <div class="download-section-text">
+            <div class="download-title">Option 2: Separate XML Files</div>
+            <div class="download-description">
+                The main file <code>udusi.xml</code> includes the other XML files in the correct order through XML include statements.
+            </div>
+        </div>
+        <div class="download-section-action">
+            <a href="../downloads/udusi.zip" class="download-link" data-file-id="udusi">Download Separate Files</a>
+            <div class="file-info" id="udusi-info">Last updated: March 2025</div>
+        </div>
+    </div>
+
+    <div class="usage-section">
+        <h2>Usage Information</h2>
+        <p>
+            Both options provide the same unit definitions; the difference is only in file organization.
+            For either option, you will need to:
+        </p>
+        <ol>
+            <li>Download and extract the zip archive to your preferred location</li>
+            <li>Point your UDUNITS2 installation to either <code>udusi.xml</code> (for separate files option) or 
+                <code>udusi-combined.xml</code> (for the unified file option)</li>
+            <li>Refer to the <a href="https://www.unidata.ucar.edu/software/udunits/udunits-current/doc/udunits/" target="_blank">
+                UDUNITS2 documentation</a> for configuration details</li>
+        </ol>
+    </div>
+
+    <!-- Hidden provenance data that will be used by the main page -->
+    <div id="provenance-data">
+        <h3>File Provenance Information</h3>
+        <p>
+            The UDUNITS2 files available for download on this page are compatible with the UDUNITS2 standard implemented by UCAR.<br/><br/>
+        </p>
+        <p>
+            <strong>Data sources:</strong>
+            <ul><br/>
+                <li>UCAR UDUNITS2 library: <a href="https://www.unidata.ucar.edu/software/udunits/" target="_blank">https://www.unidata.ucar.edu/software/udunits/</a></li><br/>
+                <li>SI Brochure (9th edition): <a href="https://www.bipm.org/en/publications/si-brochure"  target="_blank">https://www.bipm.org/en/publications/si-brochure</a>
+                    Bureau International des Poids et Mesures</li><br/>
+                <li>SI Reference Point ofthe SI Digital Framework: <a href="https://si-digital-framework.org/SI" target="_blank">https://si-digital-framework.org/SI</a></li><br/>
+            </ul>
+        </p>
+        <p>
+            All files are versioned and updated periodically to ensure compatibility with the latest standards.<br/><br/>
+            The text content of this page was last updated on ___TIMESTAMP___.
+        </p>
+    </div>
+
+    <script>
+        async function updateFileInfo(fileId, zipUrl) {
+            const infoEl = document.getElementById(`${fileId}-info`);
+            try {
+                const res = await fetch(zipUrl, { method: 'HEAD' });
+                if (!res.ok) throw new Error('Not found');
+
+                const size = res.headers.get('Content-Length');
+                const modified = res.headers.get('Last-Modified');
+
+                const sizeStr = size
+                    ? `${(size / 1024).toFixed(0)} KB`
+                    : 'unknown';
+
+                const dateStr = modified
+                    ? new Date(modified).toISOString().slice(0, 10)
+                    : 'unknown';
+
+                infoEl.textContent = `File size: ${sizeStr} | Last updated: ${dateStr}`;
+            } catch (e) {
+                infoEl.textContent = 'File info unavailable';
+            }
+        }
+
+        window.addEventListener('load', () => {
+            updateFileInfo('udusi-combined', '../downloads/udusi-combined.zip');
+            updateFileInfo('udusi', '../downloads/udusi.zip');
+
+            window.parent.postMessage({
+                type: 'page-info',
+                title: document.title,
+                provenance: document.getElementById('provenance-data')?.innerHTML || ''
+            }, '*');
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UDUSI: SI and UDUNITS2 units</title>
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/search.css">
+    <style>
+        /* Additional styles for the last updated info */
+        .last-updated {
+            margin-left: 10px;
+            font-style: italic;
+            color: #777;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .copyright-info {
+            flex: 1;
+        }
+
+        /* Fix for safari and older browsers */
+        .nav-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* Add visual feedback when clicking menu items */
+        .nav-list button:active {
+            background-color: #357ab8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="title-container">
+            <span class="main-title">UDUSI: UDUNITS + SI units information &emsp;</span>
+            <span class="subtitle" id="page-subtitle">Loading...</span>
+            <button id="provenance-btn" class="provenance-button">
+                <span class="info-icon">ℹ</span>
+                Provenance
+            </button>
+            <!-- Search -->
+            <button id="search-toggle-btn" class="search-toggle-btn" title="Search all units">🔍</button>
+            <div id="search-overlay" class="search-overlay">
+                <input type="search" id="search-input" placeholder="Search all units, symbols, aliases…" autocomplete="off" spellcheck="false">
+                <button id="search-close-btn" class="search-close-btn" title="Close search">&times;</button>
+            </div>
+            <div id="search-dropdown" class="search-dropdown"></div>
+        </div>
+    </div>
+
+    <div id="provenance-panel" class="provenance-panel">
+        <div class="provenance-content">
+            <div class="provenance-header">
+                <h3>Data Provenance</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div id="provenance-text">
+                No provenance information available.
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <nav class="nav-column">
+            <div class="nav-title">Unit Categories</div>
+            <ul class="nav-list">
+                <div class="nav-subtitle">SI</div>
+                <li><button data-page="pages/prefixes.html">SI Prefixes</button></li>
+                <li><button data-page="pages/constants.html">SI Constants</button></li>
+                <li><button data-page="pages/base-units.html">SI Base Units</button></li>
+                <li><button data-page="pages/special-units.html">SI Special Named Units</button></li>
+                <li><button data-page="pages/nonsi-units.html">Non-SI Units</button></li>
+                <div class="nav-subtitle">UDUNITS2</div>
+                <li><button data-page="pages/udu-common-units.html">Common Units</button></li>
+                <li><button data-page="pages/download-page.html">Download xml files</button></li>
+                <div class="nav-subtitle">Information</div>
+                <li><button data-page="pages/about-page.html" class="active">About UDUSI</button></li>
+                <li><button data-page="pages/changes-page.html">Changes and updates</button></li>
+                <li><button data-page="pages/technical-page.html">Technical details</button></li>
+                <li><button data-page="pages/cf-notes-page.html" id="cf-notes-btn">Notes for <i>CF Conventions</i></button></li>
+            </ul>
+        </nav>
+
+        <div class="content-area">
+            <div class="loading">Loading...</div>
+            <iframe id="content-container"></iframe>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="copyright-info">
+                Copyright © 2025 &bull; Lars Bärring  &bull; All information on these webpages are made available under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a> Creative Commons Attribution 4.0 International License.
+            </div>
+            <div id="last-updated-info" class="last-updated">
+                Last updated: Checking...
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/last-updated.js"></script>
+    <script src="js/keyboard-navigation.js"></script>
+    <script src="js/search.js"></script>
+
+</body>
+</html>

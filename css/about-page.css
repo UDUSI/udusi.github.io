@@ -1,0 +1,73 @@
+/* Updated about-page.css with more compact spacing */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5; /* Slightly reduced from 1.6 */
+    color: #333;
+    padding: 15px; /* Reduced from 20px */
+    max-width: 900px;
+    margin: 0 auto;
+    min-width: 768px; /* Match the min-width from navigation.css */
+}
+
+h1 {
+    color: #4a90e2;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 8px; /* Reduced from 10px */
+    margin-bottom: 15px; /* Reduced from 20px */
+}
+
+h2 {
+    color: #2c5282;
+    margin-top: 15px; /* Reduced from 20px */
+    margin-bottom: 10px; /* Reduced from 15px */
+}
+
+.content-section {
+    margin-bottom: 20px; /* Reduced from 30px */
+    background-color: #f9f9f9;
+    padding: 15px; /* Reduced from 20px */
+    border-radius: 5px;
+    border-left: 4px solid #4a90e2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Empty contact section should take less space */
+.content-section:last-of-type {
+    padding: 8px 15px; /* Reduced from 10px 20px */
+    margin-bottom: 8px; /* Reduced from 10px */
+}
+
+a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+strong {
+    font-weight: 600;
+    color: #2c5282;
+}
+
+ul {
+    padding-left: 20px; /* Reduced from 25px */
+    margin-top: 8px; /* Added to reduce space after paragraph */
+    margin-bottom: 8px; /* Added to reduce space before next element */
+}
+
+li {
+    margin-bottom: 6px; /* Reduced from 8px */
+}
+
+/* Added to reduce space between paragraphs */
+p {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+/* Provenance data hidden by default, used by the main page */
+#provenance-data {
+    display: none;
+}

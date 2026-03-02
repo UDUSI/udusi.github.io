@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About UDUSI</title>
+    <link rel="stylesheet" href="../css/about-page.css">
+    <style>
+        /* Modal popup styles */
+        .modal-btn {
+            background-color: #4a90e2;
+            color: white;
+            padding: 3px 6px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+
+        .modal-btn:hover {
+            background-color: #2c5282;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 75%;
+            max-width: 700px;
+            border-radius: 5px;
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal-btn:hover {
+            color: #333;
+        }
+
+        .license-text {
+            font-family: monospace;
+            white-space: pre-wrap;
+            background-color: #f8f8f8;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        /* Additional styles for more compact layout */
+        .content-section h2 {
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        .content-section p {
+            margin: 6px 0;
+        }
+
+        .license-info {
+            display: flex;
+            align-items: center;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden provenance data that will be used by the main page -->
+    <div id="provenance-data" class="provenance-metadata">
+        <p>This About UDUSI was last updated on ___TIMESTAMP___.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Project Overview</h2>
+        <p>
+            UDUSI (UDUNITS + SI) is a project that integrates the International System of Units (SI) with the UDUNITS2 XML database of unit descriptions.
+            The project has two main goals:
+            (i) to provide a web-based overview of the units available in the UDUNITS2 software package, and
+            (ii) to update the UDUNITS2 XML database with the 2019 SI definitions of units. Changes to the UDUNITS2 C code base are beyond the scope of UDUSI.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>About the Units Webpages</h2>
+        <p>
+            The units web pages provide information about different unit categories, as well as SI prefixes and SI constants.
+            In addition to the content included in the original UDUNITS2 XML files, links to the relevant SI Reference Point entries are provided for units recognized by SI.
+            For units with a symbol involving non-standard ASCII characters (e.g., ohm, Ω), the Unicode code point is displayed as a tooltip when the cursor hovers over the symbol.
+            Deprecated units, names, and symbols (see the Changes page) are shown with a grey tint.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>About SI</h2>
+        <p>
+            The International System of Units (SI) is the modern form of the metric system and the world's most widely used system of measurement.
+            It is maintained by the International Bureau of Weights and Measures (BIPM) and is described on the
+            <a href="https://www.bipm.org/en/measurement-units/" target="_blank">BIPM website</a>, particularly in the documents
+            available on the <a href="https://www.bipm.org/en/publications/si-brochure" target="_blank">SI Brochure</a>  download page.
+        </p>
+        <div class="license-info">
+            <strong>License:</strong>&ensp;SI documentation is generally provided under the&ensp;<a href="https://creativecommons.org/licenses/by/3.0/igo/" target="_blank">Creative Commons Attribution 3.0 IGO License</a>.
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>About UDUNITS2</h2>
+        <p>
+            UDUNITS2 is a C library developed by UCAR that provides support for units of physical quantities.
+            It can parse formatted unit expressions, convert numeric values between compatible units, and perform arithmetic operations with units.
+            Visit the  <a href="https://www.unidata.ucar.edu/software/udunits/" target="_blank">UDUNITS2 website</a> for more information.
+        </p>
+        <div class="license-info">
+            <strong>License:</strong>&ensp;UDUNITS2 is released under the UCAR license:&ensp;
+            <button class="modal-btn" id="openLicenseBtn">View full License</button>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Contact</h2>
+        <ul>
+            <li>
+                If you have a question or comment regarding the information on these web pages or the downloadable files please open an issue
+                over at the github repository for this website: <a href="https://github.com/udusi/udusi" target="_blank">https://github.com/udusi/udusi</a>.
+            </li>
+            <li>
+                For questions or comments regarding the UDUNITS2 package or the International System of Units (SI), please see the links above.
+            </li>
+        </ul>
+        </p>
+    </div>
+
+    <!-- License Modal -->
+    <div id="licenseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal-btn">&times;</span>
+            <h2>UDUNITS2 License</h2>
+            <div class="license-text">Copyright 2014 University Corporation for Atmospheric Research and contributors.
+All rights reserved.
+
+This software was developed by the Unidata Program Center of the
+University Corporation for Atmospheric Research (UCAR)
+<http://www.unidata.ucar.edu>.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+   1) Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+   2) Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
+      and/or other materials provided with the distribution.
+   3) Neither the names of the development group, the copyright holders, nor the
+      names of contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+   4) This license shall terminate automatically and you may no longer exercise
+      any of the rights granted to you by this license as of the date you
+      commence an action, including a cross-claim or counterclaim, against
+      the copyright holders or any contributor alleging that this software
+      infringes a patent. This termination provision shall not apply for an
+      action alleging patent infringement by combinations of this software with
+      other software or hardware.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE CONTRIBUTORS
+OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.</div>
+        </div>
+    </div>
+
+    <!-- Hidden provenance data that will be used by the main page -->
+    <div id="provenance-data">
+        <h3></h3>
+        <p>
+            This page provides information about the UDUSI project, which combines the International System of Units (SI) with
+            the UDUNITS2 units database in XML format. It includes links to official websites and license information for both systems.
+        </p>
+    </div>
+
+    <script>
+        // Modal popup functionality
+        const modal = document.getElementById("licenseModal");
+        const btn = document.getElementById("openLicenseBtn");
+        const closeBtn = document.getElementsByClassName("close-modal-btn")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        window.addEventListener('load', () => {
+            window.parent.postMessage({
+                type: 'page-info',
+                title: document.title,
+                provenance: document.getElementById('provenance-data')?.innerHTML || ''
+            }, '*');
+        });
+    </script>
+
+</body>
+</html>
