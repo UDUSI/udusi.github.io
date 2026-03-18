@@ -1,5 +1,5 @@
 <svg
-   viewBox="0 0 900 450"
+   viewBox="0 0 900 490"
    font-family="monospace"
    font-size="14px"
    version="1.1"
@@ -7,7 +7,7 @@
    sodipodi:docname="xml-graphs.svg"
    inkscape:version="1.4.1-rc (d9e8dc1fe0, 2025-03-10)"
    width="900"
-   height="450"
+   height="490"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -310,7 +310,9 @@
        x="25"
        y="215"
        class="node-text"
-       id="text28">comment</text>
+       id="text28">unit_uri <tspan
+   class="new-element"
+   id="tspan28">(new)</tspan></text>
     <path
        d="M 0,230 H 20"
        class="connector"
@@ -320,9 +322,7 @@
        x="25"
        y="235"
        class="node-text"
-       id="text29">unit_uri <tspan
-   class="new-element"
-   id="tspan29">(new)</tspan></text>
+       id="text29">comment</text>
     <path
        d="M 0,250 H 20"
        class="connector"
@@ -387,7 +387,7 @@
        class="node-text"
        id="text34">aliases</text>
     <path
-       d="M 0,35 V 90"
+       d="M 0,35 V 70"
        class="connector"
        fill="none"
        id="path34" />
@@ -417,18 +417,6 @@
    class="note-text"
    id="tspan36"
    style="fill:#000000;fill-opacity:1">(l)</tspan></text>
-    <path
-       d="M 0,90 H 20"
-       class="connector"
-       fill="none"
-       id="path37" />
-    <text
-       x="25"
-       y="95"
-       class="node-text"
-       id="text37">source <tspan
-   class="new-element"
-   id="tspan37">(new)</tspan></text>
   </g>
   <!-- NAME Component -->
   <g
@@ -445,7 +433,7 @@
        class="node-text"
        id="text39">name</text>
     <path
-       d="M 0,35 V 90"
+       d="M 0,35 V 135"
        class="connector"
        fill="none"
        id="path39" />
@@ -459,25 +447,19 @@
        y="55"
        class="node-text"
        id="text40">singular</text>
-    <!-- L-shape connector (└) to horizontal line - moved down -->
+    <!-- connector from main spine to plural-slot branch -->
     <path
-       d="M 0,90 H 10.071705"
+       d="M 0,90 H 11.27126"
        class="connector"
        fill="none"
-       id="path41"
-       sodipodi:nodetypes="cc" />
-    <!-- Horizontal line with vertical stub (┤) - moved down -->
+       id="path41-spine" />
+    <!-- vertical bar of plural-slot branch -->
     <path
        d="m 11.27126,70 v 40"
        class="connector"
        fill="none"
        id="path42" />
-    <path
-       d="m 11.27126,90 h 10"
-       class="connector"
-       fill="none"
-       id="path43" />
-    <!-- Three branches - moved down and made shorter -->
+    <!-- branch 1: nothing (default plural) -->
     <path
        d="m 11.27126,70 h 10"
        class="connector"
@@ -488,7 +470,8 @@
        x="26.271261"
        y="75"
        class="node-text"
-       id="text44">*nothing*</text>
+       id="text44">[nothing]</text>
+    <!-- branch 2: explicit plural -->
     <path
        d="m 11.27126,90 h 10"
        class="connector"
@@ -499,6 +482,7 @@
        y="95"
        class="node-text"
        id="text45">plural</text>
+    <!-- branch 3: noplural -->
     <path
        d="m 11.27126,110 h 10"
        class="connector"
@@ -509,10 +493,23 @@
        y="115"
        class="node-text"
        id="text46">noplural/</text>
+    <!-- source after branch -->
+    <path
+       d="M 0,135 H 20"
+       class="connector"
+       fill="none"
+       id="path47-name" />
+    <text
+       x="25"
+       y="140"
+       class="node-text"
+       id="text47-name">source <tspan
+   class="new-element"
+   id="tspan47-name">(new)</tspan></text>
   </g>
   <!-- Legend -->
   <g
-     transform="translate(20,350)"
+     transform="translate(20,375)"
      id="g52">
     <text
        x="0"
@@ -541,6 +538,11 @@
        style="fill:#000000"><tspan
    style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;font-family:monospace;-inkscape-font-specification:'monospace, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
    id="tspan2">(l)</tspan> - List element</text>
+    <text
+       x="0"
+       y="96"
+       class="node-text"
+       id="text52">[nothing] - No element present</text>
     <text
        x="2"
        y="24"

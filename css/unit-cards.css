@@ -1,9 +1,6 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    line-height: 1.6;
-    max-width: 1000px;
-    margin: 0 auto;
     padding: 10px;
+    padding-bottom: 40px;
     background-color: #f5f5f5;
 }
 
@@ -15,12 +12,21 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Highlight applied by JS when a unit card is navigated to via hash.
+   Removed on first scroll/wheel, triggering the fade transition on .unit-card. */
+.unit-card.highlight-target {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 1px;
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.25), 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .unit-card {
     position: relative;
     background-color: white;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 10px;
+    transition: outline 0.6s ease, box-shadow 0.6s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -64,12 +70,15 @@ body {
 
 /* Middle section for quantity labels */
 .quantity-labels-container {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 4px;
     align-items: flex-end;
-    padding: 0 15px;
+    align-content: flex-end;
+    max-height: 95px;  /* fits exactly 3 pills before wrapping to next column */
+    padding: 0;
 }
 
 /* Right section for unit class */
@@ -85,7 +94,7 @@ body {
     display: inline-block;
     padding: 4px 10px;
     background-color: #f1f5f9;
-    border: 2px solid #4a90e2;
+    border: 2px solid var(--color-accent);
     border-radius: 6px;
     color: #4a5568;
     font-size: 0.85em;
@@ -98,7 +107,8 @@ body {
 .name-section {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0 20px;
     width: 100%;
 }
 
@@ -111,31 +121,19 @@ body {
 
 .unit-name {
     font-size: 1.2em;
-    font-weight: 600;
-}
-
-.unit-name a {
-    color: #4a90e2;
-    text-decoration: none;
-    border-bottom: 1px dotted #4a90e2;
-}
-
-.unit-name a:hover {
-    text-decoration: none;
-    border-bottom: 1px solid #4a90e2;
-    color: #357abd;
+    font-weight: 700;
 }
 
 .unit-symbol {
     font-size: 1.2em;
-    color: #4a90e2;
+    color: var(--color-accent);
     font-weight: 500;
     padding: 2px 8px;
     background-color: #f8f9fa;
     border-style: solid;
     border-width: 2px;
     border-radius: 8px;
-    border-color: #4a90e2;
+    border-color: var(--color-accent);
     margin-right: 10px;
     position: relative;
 }
@@ -144,7 +142,6 @@ body {
 
 .unit-symbol .unicode-info,
 .alias-section .unicode-info {
-    font-size: 12px !important;
     padding: 4px 8px;
 }
 
@@ -163,7 +160,7 @@ body {
 
 .def-value {
     color: #222;
-    font-size: 1.1em;
+    font-size: 1em;
     font-family: monospace;
     background-color: #f8f9fa;
     padding: 2px 6px;
@@ -181,6 +178,40 @@ body {
     display: inline-block;
     background-color: #f5f5f5;
     border: 1px dashed #ccc;
+}
+
+/* LaTeX copy button — appears inline after def/alt_def spans */
+.latex-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4em;
+    height: 1.4em;
+    padding: 0;
+    font-size: 0.95em;
+    line-height: 1;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background: #f8f9fa;
+    color: #555;
+    cursor: pointer;
+    opacity: 0.45;
+    transition: opacity 0.15s, background 0.15s, color 0.15s, border-color 0.15s;
+    vertical-align: middle;
+}
+
+.latex-copy-btn:hover {
+    opacity: 1;
+    background: #e8f0fb;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.latex-copy-btn.copied {
+    opacity: 1;
+    background: #e6f4ea;
+    border-color: #34a853;
+    color: #34a853;
 }
 
 .alias-section {
@@ -202,7 +233,7 @@ body {
 .definition-text {
     margin-top: 10px;
     line-height: 1.8;
-    text-align: justify;
+    text-align: left;
 }
 
 .comment-text {
@@ -212,7 +243,7 @@ body {
 }
 
 .si-uri {
-    color: #4a90e2;
+    color: var(--color-accent);
     text-decoration: none;
     display: inline-block;
     margin-bottom: 5px;
@@ -223,11 +254,11 @@ body {
 }
 
 .external-link {
-    color: #4a90e2;
+    color: var(--color-accent);
     text-decoration: none;
     margin-left: 1px;
     font-size: 1.2em;
-    border: 1px solid #4a90e2;
+    border: 1px solid var(--color-accent);
     border-radius: 0px;
 }
 
@@ -241,48 +272,76 @@ body {
     display: none;
 }
 
-/* New styles for the quantity label item */
+/* Quantity label item row */
 .quantity-label-item {
     display: flex;
     align-items: center;
+}
+
+/* Compact acronym-only quantity pill with hover tooltip */
+.quantity-pill {
+    display: inline-block;
+    background-color: #2c7a7b;
+    color: white;
+    font-size: 0.78em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    cursor: help;
+    border-bottom: none;   /* override .has-unicode dotted underline */
+}
+
+/* Pill variant for label-only quantities (no code) */
+.quantity-pill--label {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #2c7a7b;
+    font-weight: 400;
+}
+
+/* External link badges */
+.external-links-row {
+    display: flex;
+    gap: 4px;
     margin-bottom: 4px;
 }
 
-/* Updated style for quantity label to include description */
-.quantity-label-combined {
-    display: inline-flex;
-    border-radius: 4px;
-    overflow: hidden;
-    font-size: 0.8em;
+/* Special note for pi / gram edge cases */
+.special-note {
+    font-size: 0.78em;
+    color: #888;
+    margin-left: 6px;
+    font-style: italic;
 }
 
-/* Style for the acronym part */
-.quantity-acronym {
-    background-color: #2c7a7b;  /* Teal */
-    color: white;
-    padding: 2px 8px;
-    text-align: center;
+/* UCUM code and dimension label metadata row */
+.unit-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2em;
+    margin-top: 0;
+    color: #555;
+    line-height: 1.4;
 }
 
-/* Style for the description part */
-.quantity-description {
-    border: 1px solid #2c7a7b;
-    border-left: none;
-    padding: 1px 8px;
+.unit-meta-label {
+    font-weight: 600;
+    color: #777;
+    margin-right: 0.2em;
+}
+
+.unit-meta-value {
+    font-family: monospace;
     color: #333;
-    white-space: nowrap;
-    background-color: #f8f9fa;
 }
 
-/* Style for when there's only a description (no acronym) */
-.quantity-description-only {
-    border: 1px solid #2c7a7b;
-    border-radius: 4px;
-    padding: 1px 8px;
-    color: #333;
-    white-space: nowrap;
-    background-color: #f8f9fa;
-    font-size: 0.8em;
+/* Dimension label: upright sans-serif per ISO 80000-1 */
+.unit-meta-dim {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 0.04em;
 }
 
 /* URL links in text content */
@@ -298,8 +357,8 @@ body {
 }
 
 h1 {
-    color: #4a90e2;
-    border-bottom: 2px solid #4a90e2;
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
     padding-bottom: 10px;
     margin-bottom: 20px;
 }

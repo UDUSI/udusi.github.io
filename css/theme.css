@@ -1,0 +1,6 @@
+/* Theme colors — single source of truth */
+:root {
+    --color-accent: #4a90e2;
+    --color-accent-dark: #2c5282;
+    --color-accent-hover: #3a7bc8;
+}

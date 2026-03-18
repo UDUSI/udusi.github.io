@@ -2,7 +2,7 @@
  * Unit search functionality for UDUSI.
  *
  * - Lookup table is fetched lazily on first activation.
- * - Filters keys by prefix (case-sensitive) or substring, showing up to 5 results.
+ * - Filters keys by prefix (case-sensitive) or substring, showing up to MAX_RESULTS results.
  * - On selection, loads the correct page into the iframe and scrolls to the unit card.
  * - Updates the active nav button to match the loaded page.
  */
@@ -10,7 +10,7 @@
 (function () {
     'use strict';
 
-    const MAX_RESULTS = 10;
+    const MAX_RESULTS = 20;
     const LOOKUP_URL = 'lookup.json';
 
     let lookup = null;       // null = not yet fetched

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About UDUSI</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/about-page.css">
     <style>
         /* Modal popup styles */
@@ -96,7 +98,7 @@
             UDUSI (UDUNITS + SI) is a project that integrates the International System of Units (SI) with the UDUNITS2 XML database of unit descriptions.
             The project has two main goals:
             (i) to provide a web-based overview of the units available in the UDUNITS2 software package, and
-            (ii) to update the UDUNITS2 XML database with the 2019 SI definitions of units. Changes to the UDUNITS2 C code base are beyond the scope of UDUSI.
+            (ii) to update the UDUNITS2 XML database with the 2019 SI definitions of units. Changes to the UDUNITS2 C codebase are beyond the scope of UDUSI.
         </p>
     </div>
 
@@ -105,7 +107,7 @@
         <p>
             The units web pages provide information about different unit categories, as well as SI prefixes and SI constants.
             In addition to the content included in the original UDUNITS2 XML files, links to the relevant SI Reference Point entries are provided for units recognized by SI.
-            For units with a symbol involving non-standard ASCII characters (e.g., ohm, Ω), the Unicode code point is displayed as a tooltip when the cursor hovers over the symbol.
+            For units with a symbol involving non-ASCII characters (e.g., ohm, Ω), the Unicode code point is displayed as a tooltip when the cursor hovers over the symbol.
             Deprecated units, names, and symbols (see the Changes page) are shown with a grey tint.
         </p>
     </div>
@@ -126,7 +128,7 @@
     <div class="content-section">
         <h2>About UDUNITS2</h2>
         <p>
-            UDUNITS2 is a C library developed by NSF/UNIDATA that provides support for units of physical quantities.
+            UDUNITS2 is a C library developed by NSF Unidata that provides support for units of physical quantities.
             It can parse formatted unit expressions, convert numeric values between compatible units, and perform arithmetic operations with units.
             Visit the  <a href="https://www.unidata.ucar.edu/software/udunits/" target="_blank">UDUNITS2 website</a> for more information.
         </p>
@@ -141,13 +143,12 @@
         <ul>
             <li>
                 If you have a question or comment regarding the information on these web pages or the downloadable files please open an issue
-                over at the github repository for this website: <a href="https://github.com/udusi/udusi.github.io" target="_blank">https://github.com/udusi/udusi.githu.io</a>.
+                over at the github repository for this website: <a href="https://github.com/udusi/udusi.github.io" target="_blank">https://github.com/udusi/udusi.github.io</a>.
             </li>
             <li>
                 For questions or comments regarding the UDUNITS2 package or the International System of Units (SI), please see the links above.
             </li>
         </ul>
-        </p>
     </div>
 
     <!-- License Modal -->
@@ -197,40 +198,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.</di
             This page provides information about the UDUSI project, which combines the International System of Units (SI) with
             the UDUNITS2 units database in XML format. It includes links to official websites and license information for both systems.
             <br/><br/>
-            This About UDUSI page was last updated on 2026-03-03 07:54Z.
+            This About UDUSI page was last updated on 2026-03-18 16:39:49 Z.
         </p>
     </div>
 
-    <script>
-        // Modal popup functionality
-        const modal = document.getElementById("licenseModal");
-        const btn = document.getElementById("openLicenseBtn");
-        const closeBtn = document.getElementsByClassName("close-modal-btn")[0];
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
-    <script>
-        window.addEventListener('load', () => {
-            window.parent.postMessage({
-                type: 'page-info',
-                title: document.title,
-                provenance: document.getElementById('provenance-data')?.innerHTML || ''
-            }, '*');
-        });
-    </script>
+    <script src="../js/about-page.js"></script>
+    <script src="../js/page-info.js"></script>
 
 </body>
 </html>

@@ -17,15 +17,15 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* Overlay covers the right half of the top bar */
+/* Overlay sits inside .top-bar-right, expands leftward */
 .search-overlay {
     position: absolute;
     top: 0;
-    right: 0;
-    width: 50%;
+    right: 100%;
+    width: 400px;
     height: 100%;
     font-size: 0.6em;
-    background-color: #4a90e2; /* same as top bar */
+    background-color: var(--color-accent);
     display: flex;
     align-items: center;
     padding: 0 12px;
@@ -107,6 +107,8 @@
     list-style: none;
     margin: 0;
     padding: 4px 0;
+    max-height: 60vh;
+    overflow-y: auto;
 }
 
 .search-dropdown li {
@@ -121,7 +123,7 @@
 .search-dropdown li:hover,
 .search-dropdown li.highlighted {
     background-color: #f0f6ff;
-    border-left-color: #4a90e2;
+    border-left-color: var(--color-accent);
 }
 
 .search-dropdown .search-hint {
