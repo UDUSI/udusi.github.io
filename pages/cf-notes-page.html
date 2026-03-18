@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes for CF Conventions using UDUNITS2 </title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/descriptive-page.css">
     <!-- Optional: Include MathJax for mathematical formulas if needed -->
 
@@ -22,14 +24,13 @@
 <body>
     <!-- Hidden provenance data that will be used by the main page -->
     <div id="provenance-data">
-        <p>This CF Notes page was last updated on 2026-03-02 23:36Z.</p>
+        <p>This CF Notes page was last updated on 2026-03-18 18:08:39 Z.</p>
     </div>
 
     <div>
-        <h1 id="the-cf-climate-and-forecast-conventions-and-udunits2">The CF (Climate and Forecast) Conventions and UDUNITS2</h1>
-        <p>
+        <p id="the-cf-climate-and-forecast-conventions-and-udunits2">
             This page provides guidance on using UDUNITS2 with the <a href="https://cfconventions.org/" target="_blank">Climate and Forecast (CF) Conventions</a>,
-            highlighting aspects of compatibility and addressing special considerations.
+            highlighting aspects of compatibility and addressing special considerations related to CF requirements.
         </p>
     </div>
 
@@ -37,9 +38,9 @@
         <h2 id="overview">Overview</h2>
         <ul>
             <li>
-                The CF Conventions <a href="https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#overview" target="_blank">state</a>
+                The CF Conventions <a href="https://cfconventions.org/cf-conventions/cf-conventions.html#overview" target="_blank">state</a>
                 that unit strings “…are recognized by Unidata’s UDUNITS2 package …”, which in practice means that the unit must either be present
-                in the XML files or conform to the UDUNITS2  Grammar for constructing unit strings from the units present in the XML files.
+                in the XML files or be constructible from them via the UDUNITS2 grammar.
             </li>
             <li>
                 The UDUSI XML files are designed to be drop-in replacements for the original UDUNITS2 XML files.
@@ -68,10 +69,14 @@
             </li>
             <li>
                 Attached to the list of non-SI units in Table 8 of the SI Brochure is a footnote stating “<em>In using these units</em>
-                [i.e. “neper” and “bel”] <em>it is important that the nature of the quantity be specified and that any reference value
-                used be specified.</em>“ UDUNITS2, and UDUSI, follows this by specifically defining two targeted units:
+                [i.e. 'neper' and 'bel'] <em>it is important that the nature of the quantity be specified and that any reference value
+                used be specified.</em>“. UDUNITS2, and UDUSI, follows this by specifically defining two targeted units:
                 <strong><code>B_SPL</code></strong> (for “sound pressure level”), where the reference value is 20 micropascal,
-                and <strong><code>BZ</code></strong> (for radar reflectivity of precipitation), where the reference unit is $(10^{-6} m)^3$.
+                and <strong><code>BZ</code></strong> (for radar reflectivity of precipitation), where the reference unit is $(10^{-6} m)^3$. 
+                There are also three logarithmic units related to electrical amplitude: <strong><code>BV</code></strong>,
+                <strong><code>Bv</code></strong>, and <strong><code>BµV</code></strong> (reference units are 1 V, 0.775 V, and $10^{-6}$ V), 
+                as well as two related to power: <strong><code>BW</code></strong>, and <strong><code>Bm</code></strong> (reference units are 
+                1 W, and 1 mV).
             </li>
         </ul>
     </div>
@@ -164,7 +169,7 @@
             While the UDUNITS2 Library Documentation
             <a href="https://docs.unidata.ucar.edu/udunits/current/udunits2lib.html#Grammar" target="_blank">Section 6.2 Grammar</a> allows for several
             alternative phrases to “since”, these alternatives are known to be incompatible with popular software tools. Consequently, it is
-            strongly recommended to use <strong><code>since</code></strong> and avoid the alternatives.
+            strongly recommended to use <strong><code>since</code></strong> and to avoid the alternatives.
         </p>
         <p>
             The <strong><code>&lt;reference_time&gt;</code></strong> connects the values in the time coordinate variable to an epoch, i.e., a specific
@@ -183,15 +188,7 @@
         </p>
     </div>
 
-    <script>
-        window.addEventListener('load', () => {
-            window.parent.postMessage({
-                type: 'page-info',
-                title: document.title,
-                provenance: document.getElementById('provenance-data')?.innerHTML || ''
-            }, '*');
-        });
-    </script>
+    <script src="../js/page-info.js"></script>
 
 </body>
 </html>

@@ -31,21 +31,8 @@ window.addEventListener('message', (e) => {
     }
 });
 
-// Add visual feedback for focus
-document.addEventListener('DOMContentLoaded', () => {
-    const navButtons = document.querySelectorAll('.nav-list button');
-    
-    // Add focus and blur handlers for visual feedback
-    navButtons.forEach(button => {
-        button.addEventListener('focus', () => {
-            button.style.outline = '2px solid #4a90e2';
-        });
-        
-        button.addEventListener('blur', () => {
-            button.style.outline = 'none';
-        });
-    });
-});
+// Focus visual feedback is handled by CSS :focus and :focus-visible
+// rules in navigation.css — no JS overrides needed.
 
 // Improved content loading function with better error handling
 function loadContent(url) {
@@ -111,11 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Load content
             if (target.dataset.page) {
                 loadContent(target.dataset.page);
-                
-                // For debugging specifically the CF notes issue
-                if (target.id === 'cf-notes-btn') {
-                    console.log('CF Notes button clicked, loading:', target.dataset.page);
-                }
             }
         }
     });
@@ -142,22 +124,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (defaultPage) {
             loadContent(defaultPage.dataset.page);
         }
-    }
-    
-    // Add specific handling for the problematic CF notes button
-    const cfNotesBtn = document.getElementById('cf-notes-btn');
-    if (cfNotesBtn) {
-        cfNotesBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Stop event bubbling
-            
-            // Explicit handling of this specific button
-            document.querySelectorAll('.nav-list button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            cfNotesBtn.classList.add('active');
-            loadContent(cfNotesBtn.dataset.page);
-            console.log('CF Notes direct handler called');
-        });
     }
 });

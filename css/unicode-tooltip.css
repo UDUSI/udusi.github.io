@@ -21,7 +21,7 @@
     margin-left: -60px;
     font-size: 12px !important;
     line-height: 1.4;
-    white-space: nowrap;
+    white-space: nowrap;   /* default: single-line */
     opacity: 0;
     transition: opacity 0.3s;
     font-family: monospace;
@@ -34,4 +34,25 @@
 .has-unicode:hover .unicode-info {
     visibility: visible;
     opacity: 1;
+}
+
+/* Multi-line tooltip for micro prefix symbol cell */
+.micro-symbol-cell .unicode-info {
+    white-space: normal;
+    text-align: left;
+    min-width: 300px;
+    max-width: 380px;
+}
+
+/* Quantity pill tooltip: flexible width, appears to the left of the pill */
+.quantity-pill .unicode-info {
+    white-space: nowrap;
+    width: max-content;
+    max-width: 260px;
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: 6px;
+    bottom: 50%;
+    transform: translateY(50%);
 }

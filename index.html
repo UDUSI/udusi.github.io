@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UDUSI: SI and UDUNITS2 units</title>
+    <title>UDUSI: UDUNITS and SI  units</title>
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/search.css">
     <style>
@@ -43,20 +44,21 @@
 
     <div class="top-bar">
         <div class="title-container">
-            <span class="main-title">UDUSI: UDUNITS + SI units information &emsp;</span>
+            <span class="main-title">UDUSI: UDUNITS + SI units of measure &emsp;</span>
             <span class="subtitle" id="page-subtitle">Loading...</span>
-            <button id="provenance-btn" class="provenance-button">
-                <span class="info-icon">ℹ</span>
-                Provenance
-            </button>
-            <!-- Search -->
-            <button id="search-toggle-btn" class="search-toggle-btn" title="Search all units">🔍</button>
+        </div>
+        <div class="top-bar-right">
             <div id="search-overlay" class="search-overlay">
                 <input type="search" id="search-input" placeholder="Search all units, symbols, aliases…" autocomplete="off" spellcheck="false">
                 <button id="search-close-btn" class="search-close-btn" title="Close search">&times;</button>
             </div>
-            <div id="search-dropdown" class="search-dropdown"></div>
+            <button id="search-toggle-btn" class="search-toggle-btn" title="Search all units">🔍</button>
+            <button id="provenance-btn" class="provenance-button">
+                <span class="info-icon">ℹ</span>
+                Provenance
+            </button>
         </div>
+        <div id="search-dropdown" class="search-dropdown"></div>
     </div>
 
     <div id="provenance-panel" class="provenance-panel">
@@ -66,7 +68,7 @@
                 <button class="close-btn">&times;</button>
             </div>
             <div id="provenance-text">
-                <p>This index page was last updated on 2026-03-02 23:36Z.</p>
+                <p>This index page was last updated on 2026-03-18 18:08:39 Z.</p>
             </div>
         </div>
     </div>
@@ -89,7 +91,19 @@
                 <li><button data-page="pages/changes-page.html">Changes and updates</button></li>
                 <li><button data-page="pages/technical-page.html">Technical details</button></li>
                 <li><button data-page="pages/cf-notes-page.html" id="cf-notes-btn">Notes for <i>CF Conventions</i></button></li>
+                <li><button data-page="pages/website-changes-page.html">Web site changes</button></li>
             </ul>
+
+            <div class="format-selector-panel">
+                <label class="format-selector-label" for="def-format-select">Definition format</label>
+                <select id="def-format-select">
+                    <option value="unicode" selected>Unicode  (m·s⁻¹)</option>
+                    <option value="ascii">ASCII  (m.s-1)</option>
+                    <option value="cf">CF  (m s-1)</option>
+                    <option value="starstar">Star-star  (m*s**-1)</option>
+                    <option value="starcaret">Star-caret  (m*s^-1)</option>
+                </select>
+            </div>
         </nav>
 
         <div class="content-area">
@@ -101,7 +115,7 @@
     <div class="footer">
         <div class="footer-content">
             <div class="copyright-info">
-                Copyright © 2025 &bull; Lars Bärring  &bull; All information on these webpages are made available under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a> Creative Commons Attribution 4.0 International License.
+                Copyright © 2025-2026 &bull; Lars Bärring  &bull; All information on these webpages are made available under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a> Creative Commons Attribution 4.0 International License.
             </div>
             <div id="last-updated-info" class="last-updated">
                 Last updated: Checking...
@@ -113,6 +127,30 @@
     <script src="js/last-updated.js"></script>
     <script src="js/keyboard-navigation.js"></script>
     <script src="js/search.js"></script>
+    <script>
+    // Definition format selector
+    (function () {
+        var currentFormat = 'unicode';
+        var select = document.getElementById('def-format-select');
+        var iframe = document.getElementById('content-container');
+
+        function sendFormat(fmt) {
+            try {
+                iframe.contentWindow.postMessage({ type: 'def-format', format: fmt }, '*');
+            } catch (e) {}
+        }
+
+        select.addEventListener('change', function () {
+            currentFormat = this.value;
+            sendFormat(currentFormat);
+        });
+
+        // When a new page loads into the iframe, send the current format
+        iframe.addEventListener('load', function () {
+            sendFormat(currentFormat);
+        });
+    })();
+    </script>
 
 </body>
 </html>

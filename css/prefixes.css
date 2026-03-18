@@ -1,0 +1,72 @@
+/* Styles specific to the SI Metric Prefixes page */
+
+body {
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: visible;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px dashed #777;
+    overflow: visible;
+}
+
+th {
+    background-color: var(--color-accent);
+    color: white;
+    font-weight: 600;
+}
+
+/* Column widths: name | symbol | decimal (grows) | scientific | computer */
+table th:first-child, table td:first-child { width: 180px; padding-left: 10px; padding-right: 8px; }
+table th:nth-child(2), table td:nth-child(2) { width: 70px; }
+table th:nth-child(3), table td:nth-child(3) { width: auto; min-width: 200px; }
+table th:nth-child(4), table td:nth-child(4) { width: 150px; }
+table th:nth-child(5), table td:nth-child(5) { width: 150px; }
+
+/* Center-aligned table cells */
+td.col-center, th.col-center { text-align: center; }
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Prefix name line: name text + badges on one flex row, wraps if needed */
+.prefix-name-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: space-between;
+}
+
+/* Push the badge group to the right as a unit */
+.prefix-name-line .ext-badge:first-of-type {
+    margin-left: auto;
+}
+
+/* Alt name line (deka) sits below the primary line */
+.prefix-alt-name-line {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px dashed #ccc;
+}
+
+/* Alt name text (deka): same size as primary, greyed */
+.prefix-alt-name {
+    color: #888;
+}
+
+

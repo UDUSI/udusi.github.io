@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download UDUNITS2 Files</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/download-page.css">
 </head>
 <body>
@@ -36,7 +38,7 @@
         <div class="download-section-text">
             <div class="download-title">Option 2: Separate XML Files</div>
             <div class="download-description">
-                The main file <code>udusi.xml</code> includes the other XML files in the correct order through XML include statements.
+                The main file <code>udusi.xml</code> includes the other XML files in the correct order through XML include directives.
             </div>
         </div>
         <div class="download-section-action">
@@ -55,7 +57,7 @@
             <li>Download and extract the zip archive to your preferred location</li>
             <li>Point your UDUNITS2 installation to either <code>udusi.xml</code> (for separate files option) or 
                 <code>udusi-combined.xml</code> (for the unified file option)</li>
-            <li>Refer to the <a href="https://www.unidata.ucar.edu/software/udunits/udunits-current/doc/udunits/" target="_blank">
+            <li>Refer to the <a href="https://docs.unidata.ucar.edu/udunits/current/" target="_blank">
                 UDUNITS2 documentation</a> for configuration details</li>
         </ol>
     </div>
@@ -64,59 +66,25 @@
     <div id="provenance-data">
         <h3>File Provenance Information</h3>
         <p>
-            The UDUNITS2 files available for download on this page are compatible with the UDUNITS2 standard implemented by NSF/UNIDATA.<br/><br/>
+            The UDUNITS2 files available for download on this page are compatible with the UDUNITS2 standard implemented by NSF Unidata.<br/><br/>
         </p>
         <p>
             <strong>Data sources:</strong>
             <ul><br/>
-                <li>NSF/UNIDATA UDUNITS2 library: <a href="https://www.unidata.ucar.edu/software/udunits/" target="_blank">https://www.unidata.ucar.edu/software/udunits/</a></li><br/>
+                <li>NSF Unidata's UDUNITS2 library: <a href="https://www.unidata.ucar.edu/software/udunits/" target="_blank">https://www.unidata.ucar.edu/software/udunits/</a></li><br/>
                 <li>SI Brochure (9th edition): <a href="https://www.bipm.org/en/publications/si-brochure"  target="_blank">https://www.bipm.org/en/publications/si-brochure</a>
                     Bureau International des Poids et Mesures</li><br/>
-                <li>SI Reference Point ofthe SI Digital Framework: <a href="https://si-digital-framework.org/SI" target="_blank">https://si-digital-framework.org/SI</a></li><br/>
+                <li>SI Reference Point of the SI Digital Framework: <a href="https://si-digital-framework.org/SI" target="_blank">https://si-digital-framework.org/SI</a></li><br/>
             </ul>
         </p>
         <p>
             All files are versioned and updated periodically to ensure compatibility with the latest standards.<br/><br/>
-            The text content of this page was last updated on 2026-03-03 07:54Z.
+            The text content of this page was last updated on 2026-03-18 18:08:39 Z.
         </p>
     </div>
 
-    <script>
-        async function updateFileInfo(fileId, zipUrl) {
-            const infoEl = document.getElementById(`${fileId}-info`);
-            try {
-                const res = await fetch(zipUrl, { method: 'HEAD' });
-                if (!res.ok) throw new Error('Not found');
-
-                const size = res.headers.get('Content-Length');
-                const modified = res.headers.get('Last-Modified');
-
-                const sizeStr = size
-                    ? `${(size / 1024).toFixed(0)} KB`
-                    : 'unknown';
-
-                const dateStr = modified
-                    ? new Date(modified).toISOString().slice(0, 10)
-                    : 'unknown';
-
-                infoEl.textContent = `File size: ${sizeStr} | Last updated: ${dateStr}`;
-            } catch (e) {
-                infoEl.textContent = 'File info unavailable';
-            }
-        }
-
-        window.addEventListener('load', () => {
-            updateFileInfo('udusi-combined', '../downloads/udusi-combined.zip');
-            updateFileInfo('udusi', '../downloads/udusi.zip');
-
-            window.parent.postMessage({
-                type: 'page-info',
-                title: document.title,
-                provenance: document.getElementById('provenance-data')?.innerHTML || ''
-            }, '*');
-        });
-
-    </script>
+    <script src="../js/download-page.js"></script>
+    <script src="../js/page-info.js"></script>
 
 </body>
 </html>

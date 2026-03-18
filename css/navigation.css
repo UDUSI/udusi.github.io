@@ -13,12 +13,14 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background-color: #4a90e2;
+    background-color: var(--color-accent);
     color: white;
     padding: 10px 20px;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     min-width: 768px; /* Match body min-width */
+    display: flex;
+    align-items: centre;
 }
 
 .top-bar .title-container {
@@ -63,18 +65,18 @@ body {
     font-weight: 600;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #4a90e2;
+    border-bottom: 2px solid var(--color-accent);
     white-space: nowrap; /* Prevent title wrapping */
 }
 
 .nav-subtitle {
     font-size: 1.0em;
     font-weight: 600;
-    color: #4a90e2;
+    color: var(--color-accent);
     margin-top: 12px; /* Reduced from 20px */
     margin-bottom: 10px; /* Reduced from 20px */
     padding-bottom: 6px; /* Reduced from 10px */
-    border-bottom: 2px solid #4a90e2;
+    border-bottom: 2px solid var(--color-accent);
     white-space: nowrap; /* Prevent title wrapping */
 }
 
@@ -119,7 +121,7 @@ body {
 }
 
 .nav-list button.active {
-    background-color: #4a90e2;
+    background-color: var(--color-accent);
     color: white;
 }
 
@@ -131,7 +133,7 @@ body {
 
 /* Improve focus visibility for keyboard navigation */
 .nav-list button:focus {
-    outline: 2px solid #4a90e2; /* Clear focus indicator */
+    outline: 2px solid var(--color-accent); /* Clear focus indicator */
 }
 
 /* Add visual indicator for keyboard focus */
@@ -140,14 +142,14 @@ body {
 }
 
 .nav-list button:focus-visible {
-    outline: 2px solid #4a90e2; /* Keep outline for keyboard focus */
+    outline: 2px solid var(--color-accent); /* Keep outline for keyboard focus */
     box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2); /* Add subtle glow */
 }
 
 /* Ensure active (selected) button text remains white even when focused */
 .nav-list button.active:focus {
-    background-color: #4a90e2; /* Keep the active background color */
-    color: #333333; /* Keep the text white */
+    background-color: var(--color-accent); /* Keep the active background color */
+    color: white; /* Keep the text white */
 }
 
 /* Ensure non-active buttons get a light highlight when focused */
@@ -212,8 +214,15 @@ body {
 }
 
 /* Provenance button styling */
-.provenance-button {
+.top-bar-right {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.provenance-button {
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 4px;
@@ -316,7 +325,7 @@ body {
 }
 
 .footer-content a {
-    color: #4a90e2;
+    color: var(--color-accent);
     text-decoration: none;
     margin: 0 10px;
 }
@@ -340,4 +349,38 @@ body {
         right: 0;
         z-index: 2000;
     }
+}
+
+/* Definition format selector — sits below the nav list inside nav-column */
+.format-selector-panel {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #dee2e6;
+}
+
+.format-selector-label {
+    display: block;
+    font-size: 1.0em;
+    font-weight: 600;
+    color: var(--color-accent);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+    margin-bottom: 8px;
+}
+
+#def-format-select {
+    width: 100%;
+    font-size: 1.0em;
+    font-family: inherit;
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+}
+
+#def-format-select:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
 }
